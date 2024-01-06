@@ -1,0 +1,80 @@
+#root {
+    --bg-color: #ffd861;
+    --bg-color-light: #ffeeba;
+    --text-color-hover: #4C5656;
+    --box-shadow-color: rgba(255, 215, 97, 0.48);
+}
+
+
+.card:hover {
+    transform: translateY(-5px) scale(1.005) translateZ(0);
+    box-shadow: 0 24px 36px rgba(0, 0, 0, 0.11),
+        0 24px 46px var(--box-shadow-color);
+}
+
+.card:hover .overlay {
+    transform: scale(4) translateZ(0);
+}
+
+.card:hover .circle {
+    border-color: var(--bg-color-light);
+    background: var(--bg-color);
+}
+
+.card:hover .circle:after {
+    background: var(--bg-color-light);
+}
+
+.card:hover p {
+    color: var(--text-color-hover);
+}
+
+
+table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+}
+
+.tbl-header {
+    background-color: #FEB100;
+    color: white;
+    border-radius: 12px;
+    margin-bottom: 12px;
+}
+
+.tbl-content {
+    overflow-x: auto;
+    margin-top: 0px;
+    border: 1px solid rgba(179, 179, 179, 0.3);
+    border-radius: 10px;
+}
+
+th {
+    padding: 20px 15px;
+    text-align: left;
+    text-transform: uppercase;
+}
+
+th:last-child {
+    margin-bottom: 0;
+}
+
+td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: solid 1px rgba(161, 147, 147, 0.103);
+}
+
+tr:last-child  > td {
+    border-bottom: 0;
+}
+
+.tr-clickable {
+    cursor: pointer;
+}
+
+.tr-clickable:hover td {
+    background-color: #f3f3f3;
+}

@@ -4,10 +4,11 @@ import {
     RouterProvider,
 } from "react-router-dom";
 
-import { HotelBookingRouter, HotelBookingRoutes } from '../HotelBooking/router/index'
+import { HotelBookingRouter, HotelBookingRoutes } from '../adminHotel/HotelBooking/router/index'
 import { ErrorPage } from "../ui/pages/ErrorPage";
 import { AuthRouter, AuthRoutes } from "../auth/router";
-import { HotelManagementRouter, HotelManagementRoutes } from "../HotelManagement/router";
+import { HotelManagementRouter, HotelManagementRoutes } from "../adminHotel/HotelManagement/router";
+import { BookingServiceRouter, BookingServiceRoutes } from "../bookingService/router";
 
 
 const routesConfig = createBrowserRouter([
@@ -20,27 +21,39 @@ const routesConfig = createBrowserRouter([
         errorElement: <ErrorPage />,
     },
     {
-        // ? Journalist App
-        path: "/",
-        element: (
-            <HotelBookingRouter />
-        ),
-        children: HotelBookingRoutes,
+        path: "/hotel",
+        children: [
+            {
+              path: "booking", // Relative path to "/hotel", not "/hotel/booking"
+              element: <HotelBookingRouter />,
+              children: HotelBookingRoutes,
+              errorElement: <ErrorPage />,
+            },
+            {
+              path: "management", // Relative path to "/hotel", not "/hotel/management"
+              element: <HotelManagementRouter />,
+              children: HotelManagementRoutes,
+              errorElement: <ErrorPage />,
+            },
+            {
+                path: '*',
+                element: <Navigate to={"/hotel/management"}/>
+            }
+          ],
         errorElement: <ErrorPage />,
     },
     {
-        // ? Journalist App
         path: "/",
         element: (
-            <HotelManagementRouter />
+            <BookingServiceRouter />
         ),
-        children: HotelManagementRoutes,
+        children: BookingServiceRoutes,
         errorElement: <ErrorPage />,
     },
-    {
-        path: "/*",
-        element: <Navigate to={"/auth"} />,
-    },
+    // {
+    //     path: "/*",
+    //     element: <Navigate to={"/auth"} />,
+    // },
 ]);
 
 export const AppRouter = () => {
