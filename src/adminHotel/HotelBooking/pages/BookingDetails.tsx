@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom"
 export const BookingDetails = () => {
 
   const params = useParams()
-  const bookingDetail: Booking = JSON.parse(localStorage.getItem('bookings') as string).find((booking: Booking) => booking.id === params.id) || []
+  const bookingDetail: Booking = JSON.parse(localStorage.getItem('bookingDetails') as string).find((booking: Booking) => booking.id === params.id) || []
   const hotelsArray = JSON.parse(localStorage.getItem('hotels') as string) || []
 
   return (

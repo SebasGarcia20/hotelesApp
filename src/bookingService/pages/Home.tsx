@@ -2,14 +2,14 @@ import { Grid, Typography } from "@mui/material"
 import { NavBar } from "../components/NavBar";
 import { useEffect, useState } from "react";
 import { CardHotel } from "../components/CardHotel";
-import { CardHotelInfoProps } from "../../config/interfaces";
+import { CardHotelInfoProps, SearchFilters } from "../../config/interfaces";
 
 
 
 export const Home = () => {
 
   const [hotels, setHotels] = useState(JSON.parse(localStorage.getItem('hotels') as string))
-  const [searchFilters, setSearchFilters] = useState(JSON.parse(localStorage.getItem('searchFilters') as string) || [])
+  const searchFilters: SearchFilters = JSON.parse(localStorage.getItem('searchFilters') as string) || []
   const [hotelsByFilters, setHotelsByFilters] = useState<CardHotelInfoProps[]>([])
   let hotelsActive: CardHotelInfoProps[] = []
 
@@ -17,17 +17,17 @@ export const Home = () => {
     setHotels(JSON.parse(localStorage.getItem('hotels') as string))
   }, [localStorage])
 
-
-
   useEffect(() => {
-    setSearchFilters(JSON.parse(localStorage.getItem('searchFilters') as string) || [])
     if (hotels && hotels.length > 0) {
       hotelsActive = hotels.filter((hotel: CardHotelInfoProps) => hotel.active === true)
+      console.log(hotelsActive)
       if (searchFilters && searchFilters.city) {
         setHotelsByFilters(hotelsActive.filter((hotel: CardHotelInfoProps) => hotel.city === searchFilters.city))
+      } else {
+        setHotelsByFilters(hotelsActive)
       }
     }
-  }, [searchFilters])
+  }, [])
 
   return (
     <>
@@ -61,7 +61,7 @@ export const Home = () => {
           ))
         }
         {
-          !hotelsActive &&
+          hotelsByFilters && hotelsByFilters.length === 0 &&
           <Typography
             variant="h2"
           >

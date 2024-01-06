@@ -6,7 +6,7 @@ import { Booking, CardHotelInfoProps } from "../../../config/interfaces"
 export const HotelBooking = () => {
 
   const hotelsArray = JSON.parse(localStorage.getItem('hotels') as string) || []
-  const bookingsArray = JSON.parse(localStorage.getItem('bookings') as string) || []
+  const bookingsArray = JSON.parse(localStorage.getItem('bookingDetails') as string) || []
   const hotelsByUser =
     hotelsArray.filter((hotel: CardHotelInfoProps) => hotel.username === localStorage.getItem('username'))
       .map((hotel: CardHotelInfoProps) => hotel.id)
