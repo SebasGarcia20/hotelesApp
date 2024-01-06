@@ -9,7 +9,7 @@ export const ListHotel = () => {
 
   const navigate = useNavigate();
   const [hotels, setHotels] = useState<CardHotelInfoProps[]>(JSON.parse(localStorage.getItem('hotels') as string) || [])
-console.log(hotels)
+  console.log(hotels)
   const hotelByUser = hotels ? hotels.filter((hotel: CardHotelInfoProps) => hotel.username === localStorage.getItem('username')) : []
 
   useEffect(() => {
@@ -18,7 +18,7 @@ console.log(hotels)
 
   const toNewHotel = () => {
     navigate(`/hotel/management/new`)
-}
+  }
 
   return (
     <ManagementLayout>
@@ -56,6 +56,22 @@ console.log(hotels)
             hotelByUser.map((hotel: CardHotelInfoProps) => (
               <CardHotel idHotel={hotel.id} name={hotel.name} />
             ))
+          }
+          {
+            !hotels &&
+            <Box
+            sx={{
+              display: 'flex',
+              justifyContent: 'center',
+              width: '100%'
+            }}
+            >
+              <Typography
+                variant="h3"
+              >
+                Add a new hotel
+              </Typography>
+            </Box>
           }
         </Grid>
       </Grid>
