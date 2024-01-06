@@ -57,7 +57,6 @@ export const SideBar = ({ drawerWidth }: SideBarProps) => {
                                 }}
                             >
                                 <IconButton
-                                    href="/hotel/management"
                                     sx={{
                                         width: "80%",
                                         color: 'white'
