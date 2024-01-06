@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material"
+import { Box, Grid, Typography } from "@mui/material"
 import { ManagementLayout } from "../../../layout/ManagementLayout"
 import { TableBookings } from "../components/TableBookings"
 import { Booking, CardHotelInfoProps } from "../../../config/interfaces"
@@ -12,11 +12,6 @@ export const HotelBooking = () => {
       .map((hotel: CardHotelInfoProps) => hotel.id)
   const bookingsByUser = bookingsArray.filter((booking: Booking) => hotelsByUser.includes(booking.hotelId))
   
-  console.log(hotelsByUser)
-  console.log(bookingsArray)
-  console.log(bookingsArray)
-  console.log(bookingsByUser)
-
   return (
     <ManagementLayout>
       <Box

@@ -1,7 +1,6 @@
 import { Box, Button, Card, CardContent, CardMedia, Typography } from "@mui/material"
 import { useNavigate } from "react-router-dom"
-import { CardHotelInfoProps, Room } from "../../config/interfaces"
-import { useEffect, useState } from "react"
+import { CardHotelInfoProps } from "../../config/interfaces"
 
 export const CardHotel = (props: CardHotelInfoProps) => {
 
@@ -14,8 +13,6 @@ export const CardHotel = (props: CardHotelInfoProps) => {
         rooms
     } = props
 
-
-    const [price, setPrice] = useState<number>()
     const navigate = useNavigate()
 
     const toInfoHotel = () => {

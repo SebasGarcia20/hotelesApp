@@ -1,4 +1,4 @@
-import { Grid, Paper, Typography } from "@mui/material"
+import { Grid, Paper } from "@mui/material"
 import Banner from "../components/Banner"
 import { CardLogin } from "../components/CardLogin"
 

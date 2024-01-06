@@ -1,4 +1,4 @@
-import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, Grid, IconButton, Switch, TextField, Typography } from "@mui/material"
+import { Autocomplete, Box, Button, Checkbox, FormControlLabel, FormGroup, Grid, Switch, TextField, Typography } from "@mui/material"
 import { ManagementLayout } from "../../../layout/ManagementLayout"
 import { ModalAddRoom } from "../components/ModalAddRoom"
 import React, { useEffect, useState } from "react"
@@ -214,6 +214,7 @@ export const ViewHotel = () => {
                             sx={{ width: 235 }}
                             value={city}
                             onChange={(event: any, newValue: string | null) => {
+                                console.log(event)
                                 setCity(newValue as string);
                             }}
                             renderInput={(params) => <TextField {...params} label="City " />}

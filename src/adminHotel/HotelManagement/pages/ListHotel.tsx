@@ -1,7 +1,7 @@
-import { Box, Button, Card, CardContent, CardMedia, Grid, Typography } from "@mui/material"
+import { Box, Button, Grid, Typography } from "@mui/material"
 import { ManagementLayout } from "../../../layout/ManagementLayout"
 import { CardHotel } from "../components/CardHotel"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { CardHotelInfoProps } from "../../../config/interfaces"
 import { useNavigate } from "react-router-dom"
 
@@ -12,11 +12,13 @@ export const ListHotel = () => {
 
   const hotelByUser = hotels.filter((hotel: CardHotelInfoProps) => hotel.username === localStorage.getItem('username'))
 
+  useEffect(() => {
+    setHotels(JSON.parse(localStorage.getItem('hotels') as string))
+  }, [localStorage])
+
   const toNewHotel = () => {
     navigate(`/hotel/management/new`)
 }
-
-  console.log('Hotel By User', hotelByUser)
 
   return (
     <ManagementLayout>

@@ -2,7 +2,7 @@ import { Grid, Typography } from "@mui/material"
 import { NavBar } from "../components/NavBar";
 import { useEffect, useState } from "react";
 import { CardHotel } from "../components/CardHotel";
-import { CardHotelInfoProps, Room } from "../../config/interfaces";
+import { CardHotelInfoProps } from "../../config/interfaces";
 
 
 
@@ -20,6 +20,7 @@ export const Home = () => {
 
 
   useEffect(() => {
+    setSearchFilters(JSON.parse(localStorage.getItem('searchFilters') as string) || [])
     if (hotels && hotels.length > 0) {
       hotelsActive = hotels.filter((hotel: CardHotelInfoProps) => hotel.active === true)
       if (searchFilters && searchFilters.city) {

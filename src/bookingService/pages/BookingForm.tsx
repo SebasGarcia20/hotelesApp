@@ -31,6 +31,7 @@ export const BookingForm = () => {
         if (params) {
             let hotelsArray = JSON.parse(localStorage.getItem('hotels') as string)
             setInfoHotelstate(hotelsArray.find((hotel: CardHotelInfoProps) => params.idHotel as string === hotel.id))
+            setSearchFilters(JSON.parse(localStorage.getItem('searchFilters') as string))
         }
     }, [])
 

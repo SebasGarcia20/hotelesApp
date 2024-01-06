@@ -83,6 +83,7 @@ export const NavBar = () => {
           sx={{ width: 250 }}
           value={city}
           onChange={(event: any, newValue: string | null) => {
+            console.log(event)
             setCity(newValue as string);
           }}
           renderInput={(params) => <TextField {...params} label="Where are you going? " />}
